@@ -24,49 +24,51 @@ public final class App {
 
         for (int i = 0; i < fileArr.length; i++){
             fileList.add(fileArr[i].getName());
-            System.out.println(fileList);
         } 
+        
+        System.out.println(fileList);
 
-        // file names of all 4 txt, checked and working
-        String file1 = fileList.get(0);
-        String file2 = fileList.get(1);
-        String file3 = fileList.get(2);
-        String file4 = fileList.get(3);
+        List<String> fileNameList = new ArrayList<String>();
+
+        for (int i = 0; i < fileList.size(); i ++){
+            fileNameList.add(fileList.get(i));
+        }
 
         String sent = "";
 
+        for (int j = 0; j < fileNameList.size(); j++){
+            fileName = fileNameList.get(j);
+            File fileFin = new File(dirName, fileName);
+            System.out.println("\r");
+            System.out.println(fileFin);
+            FileReader fr = new FileReader(fileFin);
+            BufferedReader br = new BufferedReader(fr);
 
-        //file 1
-        fileName = file1;
+            // strip all punctuations
+            while((sent = br.readLine())!= null){
+                    String strippedSent = sent.replaceAll("[^a-zA-Z ]", "").toLowerCase();
+                    String[] wordArr = strippedSent.split("\\s+");
+                    for (int i = 0; i < wordArr.length; i++){
+                        wordList.add(wordArr[i]);
+                    }
+                }     
+                br.close();
+                System.out.println(wordList);
 
-        File fileFin = new File(dirName, fileName);
-        System.out.println(fileFin);
-        FileReader fr = new FileReader(fileFin);
-        BufferedReader br = new BufferedReader(fr);
+            // List<String,Integer> uniqSentString = new ArrayList<String>();
 
-        // strip all punctuations
-        while((sent = br.readLine())!= null){
-                String strippedSent = sent.replaceAll("[^a-zA-Z ]", "").toLowerCase();
-                String[] wordArr = strippedSent.split("\\s+");
-                for (int i = 0; i < wordArr.length; i++){
-                    wordList.add(wordArr[i]);
-                }
-             }     
-            br.close();
-            System.out.println(wordList);
-
-        List<String,Integer> uniqSentString = new ArrayList<String>();
-
-        for (int j=0; j <wordList.size();j++){
-            int count;
-            String shortStr = wordList.get(j) + " " + wordList.get(j+1);
-            uniqSentString.add(shortStr);
-            for (int k = 0; k < uniqSentString.size(); k++){
-                if(uniqSentString[k].matches(shortStr)){
-                    count++;
-                    System.out.println(count);
-                }
-            }
-        }
+            // for (int j=0; j <wordList.size();j++){
+            //     int count;
+            //     String shortStr = wordList.get(j) + " " + wordList.get(j+1);
+            //     uniqSentString.add(shortStr);
+            //     for (int k = 0; k < uniqSentString.size(); k++){
+            //         if(uniqSentString[k].matches(shortStr)){
+            //             count++;
+            //             System.out.println(count);
+            //         }
+            //     }
+            // }
     }
+}
+}
     
