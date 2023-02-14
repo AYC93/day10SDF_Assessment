@@ -55,15 +55,16 @@ public final class App {
             br.close();
             System.out.println(wordList);
 
-        Map<String,Integer> uniqSentString = new HashMap<String>();
+        List<String,Integer> uniqSentString = new ArrayList<String>();
 
         for (int j=0; j <wordList.size();j++){
             int count;
             String shortStr = wordList.get(j) + " " + wordList.get(j+1);
             uniqSentString.add(shortStr);
-            for (int k = 0; k<uniqSentString.size(); k++){
-                if(!uniqSentString..equals(shortStr)){
+            for (int k = 0; k < uniqSentString.size(); k++){
+                if(uniqSentString[k].matches(shortStr)){
                     count++;
+                    System.out.println(count);
                 }
             }
         }
