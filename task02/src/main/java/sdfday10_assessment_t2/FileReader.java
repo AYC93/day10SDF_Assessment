@@ -1,21 +1,16 @@
 package sdfday10_assessment_t2;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class App {
-    private App() {
+public class FileReader {
+    public FileReader(File file) {
     }
 
-
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        String dirName;
-        
+    public List<String> readFile(String dirName) throws IOException{
         
         File file = new File(dirName);
         FileReader fr = new FileReader(file);
@@ -32,6 +27,10 @@ public final class App {
 
         br.close();
 
-        System.out.println(wordList);
+        return wordList;
+    }
+
+    public static int wordCount(){
+        
     }
 }
