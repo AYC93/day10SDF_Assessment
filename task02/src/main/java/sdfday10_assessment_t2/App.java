@@ -7,10 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public final class App {
     private App() {
@@ -25,7 +24,7 @@ public final class App {
         File fileInt = new File(dirName);
         File[] fileArr = fileInt.listFiles();
 
-        Map<String, Integer> wordList = new HashMap<String, Integer>();
+        Map<String, Integer> wordList = new LinkedHashMap<String, Integer>();
         List<String> fileList = new ArrayList<String>();
 
         for (int i = 0; i < fileArr.length; i++){
@@ -63,19 +62,15 @@ public final class App {
 
                 // wordList as an array
 
-            Set<String> uniqSentString = new HashSet<>();
+            HashMap<String, Integer> uniqSenStr = new HashMap<>();
 
-            for (j =0; j < wordList.size() ; j++){
+            for (j =0; j < wordList.size() - 1 ; j++){
                 String shortStr = wordList.get(j) + " " + wordList.get(j+1);
-                uniqSentString.put(shortStr, j);
-                for (int k = 0; k < uniqSentString.size(); k++){
-            //         if(uniqSentString.get(k).equals(shortStr)){
-            //             count++;
-            //             System.out.println(count);
-            //         }
-            //     }
-            // }
+                uniqSenStr.put(shortStr, j);
     }
-}}
+                System.out.println(uniqSenStr);
+}
+    }
+}
 
     
