@@ -68,6 +68,13 @@ public final class App {
                 System.out.println(wordMap);
                 System.out.println(wordSet);
 
+                String[] uniqWordArr = wordSet.toArray(new String[wordSet.size()]);
+                
+                for(int k = 0; k < wordSet.size(); k ++ );
+                    if (!uniqWordAr[k].contains(wordMap.get(i))){
+                        
+                    }
+
                 HashMap<Integer,String> uniqSenStr = new HashMap<>();
 
                 for (j =0; j < wordMap.size() - 1 ; j++){
